@@ -20,22 +20,20 @@ export const goodsSlice = createSlice({
 
     updateProduct: (state, action) => {
       const { id, updates } = action.payload;
-      const product = state.items.find(el => el.id === id);
+      const items = state.items.map((product) => {
+        if (product.id === id) {
+          return { ...product, ...updates };
+        }
 
-      if (product) {
-        Object.assign(product, updates);
-      }
+        return product;
+      });
+
+      return { ...state, items };
     },
 
-    deleteProduct: (state, action) => {
-      const { id } = action.payload;
-
-      const index = state.items.findIndex(el => el.id === id);
-
-      if (index !== -1) {
-        state.items.splice(index, 1);
-      }
-    },
+    deleteProduct: ((state, action) => {
+      state.items = state.items.filter(el => el.id !== action.payload);
+    }),
 
     setGoods: (state, action) => {
       state.items = action.payload;

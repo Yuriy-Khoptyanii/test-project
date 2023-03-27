@@ -7,7 +7,8 @@ export interface Product {
   rating: number;
   stock: number;
   category: string;
-  discountPercentage: number;
-  brand: string;
-  thumbnail: string;
+  discountPercentage?: number;
+  brand?: string;
+  thumbnail?: string;
+  deleteAction?: string;
 }

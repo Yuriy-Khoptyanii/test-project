@@ -1,9 +1,12 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import './SearchField.scss';
 
-export const SearchField: React.FC = memo(() => {
-  const [nameSearch, setNameSearch] = useState('');
+type Props = {
+  nameSearch: string;
+  setNameChange: (value: string) => void;
+};
 
+export const SearchField: React.FC<Props> = memo(({ nameSearch, setNameChange }) => {
   return (
     <div className="panel-block">
       <p className="control has-icons-left has-icons-right">
@@ -13,7 +16,7 @@ export const SearchField: React.FC = memo(() => {
           className="input"
           placeholder="Search"
           value={nameSearch}
-          onChange={(event) => setNameSearch(event.target.value)}
+          onChange={(event) => setNameChange(event.target.value)}
         />
 
         <span className="icon is-left">
@@ -27,7 +30,7 @@ export const SearchField: React.FC = memo(() => {
               data-cy="ClearButton"
               type="button"
               className="delete"
-              onClick={() => setNameSearch('')}
+              onClick={() => setNameChange('')}
             />
           </span>
         )}
