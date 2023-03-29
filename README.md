@@ -1,5 +1,7 @@
 Task
 
+final demo - https://yuriy-khoptyanii.github.io/test-project/#/
+
 Develop a simple web application page that allows users to browse and filter product listings from a database. Use React and Redux to create an interface and manage application state. Interact with the API to retrieve and store data from the database.
 
 In this task I made and used:
