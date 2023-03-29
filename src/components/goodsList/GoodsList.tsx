@@ -19,7 +19,6 @@ type Data = {
 };
 
 export const GoodsList: React.FC<Props> = memo(({ nameSearch }) => {
-  // const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const goods: Product[] = useSelector((state: RootState) => state.goods.items);
