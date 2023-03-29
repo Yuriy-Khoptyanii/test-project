@@ -8,7 +8,7 @@ type Props = {
 
 export const SearchField: React.FC<Props> = memo(({ nameSearch, setNameChange }) => {
   return (
-    <div className="panel-block">
+    <div className="input-search">
       <p className="control has-icons-left has-icons-right">
         <input
           data-cy="SearchField"

@@ -15,7 +15,10 @@ export const HomePage: React.FC = memo(() => {
 
   return (
     <div className="homePage">
-      <SearchField nameSearch={nameSearch} setNameChange={setNameChange} />
+      <SearchField
+        nameSearch={nameSearch}
+        setNameChange={setNameChange}
+      />
       <GoodsList nameSearch={nameSearch} />
     </div>
   );

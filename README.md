@@ -1,30 +1,29 @@
-Завдання: 
+Task
 
-Розробити просту сторінку веб-додатка, що дозволяє користувачам переглядати та фільтрувати списки товарів з бази даних. Використовувати React та Redux для створення інтерфейсу та управління станом додатка. Взаємодіяти з API, щоб отримати та зберегти дані з бази даних.
+Develop a simple web application page that allows users to browse and filter product listings from a database. Use React and Redux to create an interface and manage application state. Interact with the API to retrieve and store data from the database.
+
+In this task I made and used:
+
+1. Create an application consisting of several components: a header, a search field, a list of products, and a form for adding a new product.
+2. Also created two pages and used React Router for navigation.
+3. Used integration with Api to get goods from the server and then store them in redux.
+4. Used Redux ToolKit to manage the state of products, which allows you to add, update and delete products.
+5. Created a product list component that receives data from the Redux store and displays them in the form of a table. 
+Used the library to create the table - React-table.
+Added the ability to sort products by each column.
+Added new column which allows you to remove the term from the list and from the redux store.
+6. Added a search box that allows users to search for products by name or category. The product list component is updated automatically when the user enters a query in the search field.
+7. created a form for adding a new product. Used Formik and Yup to validate input.
+8. Used TypeScript.
 
 
-1.	Створіть додаток, що складається з декількох компонентів: заголовок, пошукове поле, список товарів, та форма для додавання нового товару.
-2.	Використовуйте React Router для створення маршрутів додатку, які дозволяють користувачам переходити між сторінками.
-3.	Використовуйте Redux для управління станом додатку. Створіть reducer та actions, які дозволяють додавати, видаляти та оновлювати товари.
-4.	Створіть компонент списку товару, який отримує дані з Redux store та відображає їх у вигляді таблиці з колонками: ID, назва, опис, ціна, фото, рейтинг, сток, категорія. Додайте можливість сортування та фільтрації товару за кожною колонкою.
-5.	Додайте пошукове поле, яке дозволяє користувачам шукати товари за назвою або категорією. Компонент списку товару повинен оновлюватись автоматично, коли користувач вводить запит у пошукове поле.
-6.	Створіть форму для додавання нового товару. Використайте Formik та Yup для валідації введених даних. Форма повинна містити поля: Назва, Автор, Рік видання, Рейтинг.
-7.	Додайте можливість видалити елемент зі списку та з Redux store.
+Technologies and useful links:
 
-
-Технології і корисні посилання:
-
-Тестовий мок - https://dummyjson.com/
+Test server - https://dummyjson.com/
 Formik - https://formik.org/
 Yup - https://github.com/jquense/yup
 Router - https://reactrouter.com/en/main
 Redux - https://redux.js.org/
-
-Додатково:
-
-Використання TypeScript буде плюсом.
-Код писати тільки функціонально.
-Красива стилізація буде плюсом великим плюсом.
-Додавання нового функціоналу і механік для проекту які не описанні в тз буде великим плюсом.
-
-Готові задачі та питання можна надсилати ментору - https://t.me/Alampil
+React-Table - https://tanstack.com/table/v8
+MUI - https://mui.com/
+Bulma - https://bulma.io/

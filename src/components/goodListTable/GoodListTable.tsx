@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ColumnDef,
   flexRender,
@@ -42,7 +43,15 @@ const columns: ColumnDef<Product>[] = [
     cell: ({ row }) => {
       const rowInfo = row.original;
 
-      return <img className="prodImg" src={rowInfo.images[0]} alt="img" />;
+      return (
+        <img
+          className="prodImg"
+          src={
+            typeof rowInfo.images !== 'string' ? rowInfo.images[0] : rowInfo.images
+          }
+          alt="img"
+        />
+      );
     },
   },
   {
@@ -69,7 +78,7 @@ const columns: ColumnDef<Product>[] = [
 ];
 
 export const GoodListTable: React.FC<Props> = ({ data }) => {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data,
@@ -107,8 +116,8 @@ export const GoodListTable: React.FC<Props> = ({ data }) => {
                             header.getContext(),
                           )}
                           {{
-                            asc: ' 🔼',
-                            desc: ' 🔽',
+                            asc: ' ▲',
+                            desc: ' ▼',
                           }[header.column.getIsSorted() as string] ?? null}
                         </div>
                       </div>
@@ -120,15 +129,16 @@ export const GoodListTable: React.FC<Props> = ({ data }) => {
           ))}
         </thead>
         <tbody>
-          {table
-            .getRowModel()
-            .rows
-            .map(row => {
+          {table.getRowModel().rows
+            .map((row: { id: React.Key | null | undefined; getVisibleCells: () => any[]; }) => {
               return (
                 <tr key={row.id}>
                   {row.getVisibleCells().map(cell => {
                     return (
-                      <td key={cell.id} style={{ verticalAlign: 'middle' }}>
+                      <td
+                        key={cell.id}
+                        style={{ verticalAlign: 'middle' }}
+                      >
                         <div className="table-row">
                           {flexRender(
                             cell.column.columnDef.cell,

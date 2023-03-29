@@ -12,6 +12,7 @@
 
 .table-header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -37,7 +38,6 @@ td {
   padding: 10px;
   min-width: 140px;
   vertical-align: middle;
-
 }
 
 tr:nth-child(even) td {

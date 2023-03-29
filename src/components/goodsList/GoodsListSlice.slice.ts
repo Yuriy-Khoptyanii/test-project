@@ -4,10 +4,12 @@ import { Product } from '../../types/Product';
 
 export interface GoodsState {
   items: Product[],
+  isFirstLoading: boolean,
 }
 
 const initialState: GoodsState = {
   items: [],
+  isFirstLoading: true,
 };
 
 export const goodsSlice = createSlice({
@@ -38,6 +40,10 @@ export const goodsSlice = createSlice({
     setGoods: (state, action) => {
       state.items = action.payload;
     },
+
+    setLoading: (state, action) => {
+      state.isFirstLoading = action.payload;
+    },
   },
 });
 
@@ -46,6 +52,7 @@ export const {
   updateProduct,
   deleteProduct,
   setGoods,
+  setLoading,
 } = goodsSlice.actions;
 
 export default goodsSlice.reducer;
