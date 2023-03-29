@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PacmanLoader from 'react-spinners/PacmanLoader';
 import { setGoods, setLoading } from './GoodsListSlice.slice';
 import { GoodListTable } from '../goodListTable/GoodListTable';
 import type { RootState } from '../../store';
@@ -18,7 +19,7 @@ type Data = {
 };
 
 export const GoodsList: React.FC<Props> = memo(({ nameSearch }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const goods: Product[] = useSelector((state: RootState) => state.goods.items);
@@ -28,7 +29,6 @@ export const GoodsList: React.FC<Props> = memo(({ nameSearch }) => {
 
   useEffect(() => {
     if (first) {
-      setIsLoading(true);
       fetch('https://dummyjson.com/products')
         .then((response) => response.json())
         .then((data: Data) => {
@@ -41,8 +41,9 @@ export const GoodsList: React.FC<Props> = memo(({ nameSearch }) => {
           });
 
           dispatch(setGoods(finalGoods));
-          setIsLoading(false);
-          dispatch(setLoading(false));
+          setTimeout(() => {
+            dispatch(setLoading(false));
+          }, 2000);
         });
     }
   }, [goods]);
@@ -53,8 +54,12 @@ export const GoodsList: React.FC<Props> = memo(({ nameSearch }) => {
 
   return (
     <>
-      {isLoading
-        ? <p>Data is Loading...</p>
+      {first
+        ? (
+          <PacmanLoader
+            color="#36d7b7"
+          />
+        )
         : <GoodListTable data={visibleGoods} />}
     </>
   );
